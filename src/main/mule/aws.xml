@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:s3="http://www.mulesoft.org/schema/mule/s3" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/s3 http://www.mulesoft.org/schema/mule/s3/current/mule-s3.xsd">
+	<sub-flow name="awsSub_Flow" doc:id="8a7c696c-7203-44b8-9f8f-cf2b14ad9679" >
+		<logger level="DEBUG" doc:name="Before Backend Call" doc:id="aeec494d-2de8-4cbc-9c4b-17225fca8c06" message='transactionID: #[vars.transactionId]], correlationID: #[vars.correlationID], message: "Before document upload to S3", bucketName: #[vars.bucketName], keyPath: #[vars.keyPath]' />
+		<s3:put-object doc:name="Put Object" doc:id="90ee1bd4-b03c-47f2-bca6-b30fb5cb40aa" config-ref="Amazon_S3_Configuration" bucketName="${aws.bucket}" key="#[vars.keyPath]" >
+		</s3:put-object>
+		<logger level="DEBUG" doc:name="After Backend Call" doc:id="a350baf9-3bde-4a4a-9259-bea85327d7ed" message='transactionID: #[vars.transactionId]], correlationID: #[vars.correlationID], message: "After document upload to S3", payload: #[payload]' />
+	</sub-flow>
+</mule>

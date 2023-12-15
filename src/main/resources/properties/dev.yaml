@@ -1,0 +1,7 @@
+api_id: "19147292"
+
+aws:
+  access_key: "AKIA4LZWRYPF7MG7N5XF"
+  secret_key: "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"
+  region: "us-east-2"
+  bucket: "invoicepdfsap"
